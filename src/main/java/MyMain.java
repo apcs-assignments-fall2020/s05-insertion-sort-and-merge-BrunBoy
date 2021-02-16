@@ -21,21 +21,21 @@ public class MyMain {
      // sorted array
      // You may assume arr1 and arr2 are the same length
     public static int[] merge(int[] arr1, int[] arr2) { 
-        int[] arr3=new int[arr1.length+arr2.length];
-        int count=0;
+        int [] outputArray=new int[arr1.length+arr2.length];
         for (int i=0; i<arr1.length; i++){
-            count++;
-            for (int j=0; j<arr2.length; j++){
-                if (arr1[i]<arr2[count]){
-                    arr3[j]=arr1[i];
-                }
-                else{
-                    arr3[j]=arr2[count];
-                }
+            if (arr1[i]>arr2[i]){
+                int temp=arr1[i];
+                arr1[i]=arr2[i];
+                arr2[i]=temp;
+                outputArray[i]=arr1[i];
             }
         }
-        //im not sure how to add the remaining elements to the array
-        return null;
+        for (int j=outputArray.length/2; j<outputArray.length; j++){
+            int m=0;
+            outputArray[j]=arr2[m];
+            m++;
+        }
+        return outputArray;
     }
 
     public static void main(String[] args) {
